@@ -3,13 +3,14 @@ import 'rxjs/add/operator/map';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { FORM_PROVIDERS, LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { HTTP_PROVIDERS } from '@angular/http';
+import { HTTP_PROVIDERS, JSONP_PROVIDERS } from '@angular/http';
 
 import { AppComponent } from './app/core/components/app/app.component';
 import { APP_ROUTES_PROVIDER } from './app/core/app.routes';
 import { CORE_PROVIDERS } from './app/core';
 import { AUTH_PROVIDERS } from './app/auth';
 import { POSTS_PROVIDERS } from './app/posts';
+import { WIKI_PROVIDERS } from './app/wiki';
 
 if (ENVIRONMENT === 'production') {
   enableProdMode();
@@ -18,10 +19,12 @@ if (ENVIRONMENT === 'production') {
 bootstrap(AppComponent, [
   FORM_PROVIDERS,
   HTTP_PROVIDERS,
+  JSONP_PROVIDERS,
 
   APP_ROUTES_PROVIDER,
   AUTH_PROVIDERS,
   POSTS_PROVIDERS,
+  WIKI_PROVIDERS,
   CORE_PROVIDERS,
 
   { provide: LocationStrategy, useClass: HashLocationStrategy },
